@@ -218,7 +218,7 @@ if (flags & NGX_POST_EVENTS) {
 ### 模块分类
 nginx 官方模块可以分为5大类：核心模块，http模块，mail模块，事件模块，配置模块（现在应该还有个stream模块）。他们之间的关系如下图所示：
 
-![images](/assets/images/blogs/2022-02-26/image2022-02-26_3.png)
+![images](/assets/images/blogs/2022-02-26/image2022-02-26_2.png)
 
 简单的来说核心模块只负责定义相应的模块（就是解析配置文件中的关键字比如http，event等等），而具体到每类模块的加载和管理都是由ngx_xxx_core_module模块做的。
 
@@ -471,7 +471,7 @@ typedef struct {
 
 在http请求的header解析完之后，nginx会遍历 handlers 数组中的数据来执行http 模块注册在各个阶段中的回调函数。这个回调函数的执行是通过nginx提供给每个阶段的checker函数来执行（checker函数的第一个参数是http结构体，第二个参数是http模块注册的回调函数）。一个阶段只有一个checker方法，各个阶段的checker方法如下所示：
 
-![image](/assets/images/blogs/2022-02-26/image2022-02-26_2.png)
+![image](/assets/images/blogs/2022-02-26/image2022-02-26_3.png)
 
 
 
