@@ -1,15 +1,16 @@
 ---
 layout: article
-title: nginx 事件循环及http请求处理流程分析
+title: nginx源码分析（1）
 tags: nginx
 aside:
   toc: true
 ---
 
-
-## nginx的事件循环
+# nginx事件循环及http请求处理流程分析
+本篇blog是nginx源码分析系列的第一篇（也有可能是最后一篇，作者想到哪写到哪，太忙就不写了）。主要分析nginx事件循环以及http请求处理前半部分的代码（只涉及到nginx框架的处理部分）。
 <!--more-->
-我们经常说nginx是一个事件驱动的web服务器，那么什么是事件驱动呢？ 我个人理解，事件驱动可以用伪代码表示如下：
+## nginx的事件循环
+众所周知nginx是一个事件驱动的web服务器，那么什么是事件驱动呢？ 我个人理解，事件驱动可以用伪代码表示如下：
 ```c
 while（ture）{
 	if(有事件可以处理) {
